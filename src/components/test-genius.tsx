@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { cn } from "@/lib/utils";
 import { Download, Loader2, Play, AlertCircle, Sparkles, ChevronsUpDown } from "lucide-react";
 import { generateTestCasesAction } from "@/app/actions";
 import { Button } from "@/components/ui/button";
@@ -83,12 +84,12 @@ export default function TestGenius() {
         setActiveTab("cases");
          toast({
           title: "Test Cases Generated!",
-          description: "The AI has created new test cases for you.",
+          description: "The system has created new test cases for you.",
         });
       } else {
         toast({
           variant: "destructive",
-          title: "AI Generation Failed",
+          title: "Generation Failed",
           description: result.error,
         });
       }
@@ -146,7 +147,7 @@ export default function TestGenius() {
           TestGenius
         </h1>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Intelligently generate and run test cases for your coding problems using the power of AI. Describe your problem, and let our AI do the heavy lifting.
+          Generate and run test cases for your coding problems. Describe your problem, and let our system do the heavy lifting.
         </p>
       </header>
 
@@ -221,7 +222,7 @@ export default function TestGenius() {
               ) : (
                 <Sparkles className="h-4 w-4" />
               )}
-              Generate with AI
+              Generate Test Cases
             </Button>
             <Button
               onClick={handleRunTests}
@@ -257,7 +258,7 @@ export default function TestGenius() {
                 {isGenerating ? (
                    <div className="flex flex-col items-center justify-center h-60 gap-4 text-center">
                     <Loader2 className="h-10 w-10 animate-spin text-primary" />
-                    <p className="text-muted-foreground">AI is thinking...<br/>Generating awesome test cases for you.</p>
+                    <p className="text-muted-foreground">Generating awesome test cases for you.</p>
                   </div>
                 ) : testCases.length > 0 ? (
                   <div className="w-full overflow-auto max-h-[60vh]">
@@ -280,19 +281,18 @@ export default function TestGenius() {
                   </div>
                 ) : (
                    <div className="relative w-full h-[50vh] rounded-lg overflow-hidden">
-                      <Image 
+                      <Image
                         src="https://picsum.photos/800/600"
                         alt="Abstract placeholder image"
                         fill
                         className="object-cover"
-                        data-ai-hint="abstract code"
                       />
                        <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
                          <Alert className="bg-background/80 backdrop-blur-sm max-w-sm">
                           <AlertCircle className="h-4 w-4" />
                           <AlertTitle className="font-headline">No Test Cases Yet</AlertTitle>
                           <AlertDescription>
-                            Describe a problem and click "Generate with AI" to get started.
+                            Describe a problem and click "Generate Test Cases" to get started.
                           </AlertDescription>
                          </Alert>
                        </div>

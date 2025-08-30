@@ -4,7 +4,7 @@
 
 - Problem Input: Allows users to input a coding problem description in plain text.
 - Code Input: Enables users to optionally input their code (Python, C++, or Java).
-- Test Case Generation (AI): Uses the Gemini API as a tool to generate test cases (normal, boundary, edge) and expected outputs from the problem statement. Generates test cases and expected outputs even if the code is not provided.
+- Test Case Generation: Automatically generates test cases (normal, boundary, edge) and expected outputs from the problem statement. Generates test cases and expected outputs even if the code is not provided.
 - Code Execution: Executes the user's code against generated test cases in a secure Python sandbox. Functionality only enabled if the code is provided.
 - Test Result Display: Presents test results in a table (input, expected output, user output, status).
 - Failed Case Highlighting: Visually highlights test cases where the user's code failed.

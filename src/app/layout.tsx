@@ -6,7 +6,7 @@ import { Code, TestTube } from "lucide-react";
 
 export const metadata: Metadata = {
   title: 'TestGenius',
-  description: 'Intelligent Test Case Generator powered by AI',
+  description: 'Test Case Generator for Coding Problems',
 };
 
 export default function RootLayout({
