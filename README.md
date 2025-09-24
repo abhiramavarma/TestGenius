@@ -82,6 +82,8 @@ A beautiful web application that transforms DSA (Data Structures and Algorithms)
 ├── requirements.txt       # Python dependencies
 ├── .gitignore            # Git ignore file
 ├── .env.example          # Environment variables template
+├── static/
+│   └── logo.png          # TestGenius logo and favicon
 ├── templates/
 │   └── index.html        # Frontend HTML template
 └── README.md             # This file
