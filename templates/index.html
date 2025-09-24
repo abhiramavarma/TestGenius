@@ -6,8 +6,8 @@
     <title>TestGenius – TestCases Generator</title>
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
-    <link rel="apple-touch-icon" href="{{ url_for('static', filename='logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png', v='2') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='logo.png', v='2') }}">
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -16,7 +16,7 @@
     <header class="header">
         <div class="logo">
             <div class="logo-icon">
-                <img src="{{ url_for('static', filename='logo.png') }}" alt="TestGenius Logo">
+                <img src="{{ url_for('static', filename='logo.png', v='2') }}" alt="TestGenius Logo">
             </div>
             <span>TestGenius</span>
         </div>
