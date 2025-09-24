@@ -1,6 +1,6 @@
 # 🚀 TestGenius – TestCases Generator
 
-A beautiful web application that transforms DSA (Data Structures and Algorithms) questions into structured JSON test cases using Google's Gemini AI.
+A beautiful web application that transforms DSA (Data Structures and Algorithms) questions into structured JSON test cases using Google's Gemini API.
 
 ## ✨ Features
 
