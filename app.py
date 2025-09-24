@@ -82,9 +82,9 @@ def _extract_json_from_text(text: str) -> str:
                         return candidate.strip()
     return text
 
-def generate_test_json_from_dsl(api_key: str, dsl_question: str) -> str:
+def generate_test_json_from_dsa(api_key: str, dsa_question: str) -> str:
     """
-    Uses the Gemini API via LangChain to convert a DSL question into a structured JSON object.
+    Uses the Gemini API via LangChain to convert a DSA question into a structured JSON object.
     """
     # Set the API key as an environment variable for LangChain to use
     os.environ["GOOGLE_API_KEY"] = api_key
@@ -98,7 +98,7 @@ def generate_test_json_from_dsl(api_key: str, dsl_question: str) -> str:
 
     # Define the prompt template
     system_prompt = """
-You are AutoTestGen, an AI system that powers a LeetCode-style application for automatic test case generation and solution validation. Your role is to parse problems, generate test cases (including edge/boundary cases), and validate user-provided code against them. You must always produce structured, deterministic, and logically consistent JSON outputs.
+You are TestGenius, an AI system that powers a LeetCode-style application for automatic test case generation and solution validation. Your role is to parse DSA problems, generate test cases (including edge/boundary cases), and validate user-provided code against them. You must always produce structured, deterministic, and logically consistent JSON outputs.
 
 Based on the problem, perform the following tasks:
 1) Parse the problem into a structured format. Infer reasonable constraints if missing.
@@ -125,7 +125,7 @@ Schema:
     # Create the full prompt with the user's question
     messages = [
         SystemMessage(content=system_prompt),
-        HumanMessage(content=f"Here is the DSL question: '{dsl_question}'")
+        HumanMessage(content=f"Here is the DSA question: '{dsa_question}'")
     ]
 
     # Invoke the model and get the response
@@ -149,28 +149,28 @@ def index():
 
 @app.route('/api/generate', methods=['POST'])
 def generate_test():
-    """API endpoint to generate test JSON from DSL question"""
+    """API endpoint to generate test JSON from DSA question"""
     try:
         data = request.get_json()
         
         if not data:
             return jsonify({'error': 'No JSON data provided'}), 400
             
-        dsl_question = data.get('dsl_question', '').strip()
+        dsa_question = data.get('dsa_question', '').strip()
         api_key = data.get('api_key', '').strip()
         
         # Use environment variable if no API key provided in request
         if not api_key:
             api_key = os.getenv('GEMINI_API_KEY')
             
-        if not dsl_question:
-            return jsonify({'error': 'DSL question is required'}), 400
+        if not dsa_question:
+            return jsonify({'error': 'DSA question is required'}), 400
             
         if not api_key:
             return jsonify({'error': 'API key is required. Please provide it in the request or set GEMINI_API_KEY environment variable.'}), 400
         
         # Generate the test JSON
-        result = generate_test_json_from_dsl(api_key, dsl_question)
+        result = generate_test_json_from_dsa(api_key, dsa_question)
         
         # Check if the result is an error message
         if result.startswith("An error occurred:"):

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AutoTestGen - DSL Test Generator</title>
+    <title>TestGenius – TestCases Generator</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -540,7 +540,7 @@
     <header class="header">
         <div class="logo">
             <div class="logo-icon">>></div>
-            <span>AutoTestGen</span>
+            <span>TestGenius</span>
         </div>
         <nav class="nav-links">
             <a href="#" class="nav-link" onclick="openModal('aboutModal'); return false;">About</a>
@@ -554,7 +554,7 @@
             <div class="input-section">
                 <h2 class="section-title">Problem Description</h2>
                 
-                <form id="dsl-form">
+                <form id="dsa-form">
                     <div class="form-group">
                         <label for="api-key" class="form-label">Google Gemini API Key</label>
                         <div style="display: flex; align-items: center;">
@@ -574,12 +574,12 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="dsl-question" class="form-label">DSL Question</label>
+                        <label for="dsa-question" class="form-label">DSA Question</label>
                         <textarea 
-                            id="dsl-question" 
-                            name="dsl-question" 
+                            id="dsa-question" 
+                            name="dsa-question" 
                             class="form-textarea"
-                            placeholder="Enter your DSL question or description here. For example: 'Check whether the given number is even or odd? n ranges from 1 to 40.'"
+                            placeholder="Enter your DSA question or description here. For example: 'Check whether the given number is even or odd? n ranges from 1 to 40.'"
                             required
                         ></textarea>
                     </div>
@@ -624,11 +624,11 @@
     <div id="aboutModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">About AutoTestGen</h2>
+                <h2 class="modal-title">About TestGenius</h2>
                 <button class="close-btn" onclick="closeModal('aboutModal')">&times;</button>
             </div>
             <div class="modal-body">
-                <p>AutoTestGen is an AI-powered tool that automatically generates structured test cases from natural language descriptions using Google's Gemini AI.</p>
+                <p>TestGenius is an AI-powered tool that automatically generates structured test cases from DSA (Data Structures and Algorithms) questions using Google's Gemini AI.</p>
                 
                 <h3>Features</h3>
                 <ul>
@@ -665,8 +665,8 @@
                 <h3>Step 1: Enter Your API Key</h3>
                 <p>Get your free Gemini API key from <a href="https://makersuite.google.com/app/apikey" target="_blank" style="color: #3b82f6;">Google AI Studio</a> or use our demo key for testing.</p>
 
-                <h3>Step 2: Describe Your Test Case</h3>
-                <p>Write your problem description in natural language. Be specific about:</p>
+                <h3>Step 2: Describe Your DSA Question</h3>
+                <p>Write your DSA problem description in natural language. Be specific about:</p>
                 <ul>
                     <li>What the function should do</li>
                     <li>Input constraints and ranges</li>
@@ -937,7 +937,7 @@
 
         function newSubmission() {
             addButtonAnimation(event.target);
-            document.getElementById('dsl-question').value = '';
+            document.getElementById('dsa-question').value = '';
             document.getElementById('results-container').innerHTML = `
                 <div id="empty-state" class="empty-state">
                     <div class="empty-state-icon">🧪</div>
@@ -948,13 +948,13 @@
             currentResults = null;
         }
 
-        document.getElementById('dsl-form').addEventListener('submit', async (e) => {
+        document.getElementById('dsa-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             
             const apiKey = document.getElementById('api-key').value.trim();
-            const dslQuestion = document.getElementById('dsl-question').value.trim();
+            const dsaQuestion = document.getElementById('dsa-question').value.trim();
             
-            if (!apiKey || !dslQuestion) {
+            if (!apiKey || !dsaQuestion) {
                 showError('Please fill in all fields');
                 return;
             }
@@ -973,7 +973,7 @@
                     },
                     body: JSON.stringify({
                         api_key: apiKey,
-                        dsl_question: dslQuestion
+                        dsa_question: dsaQuestion
                     })
                 });
                 

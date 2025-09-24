@@ -1,14 +1,14 @@
-# 🚀 DSL Test Generator
+# 🚀 TestGenius – TestCases Generator
 
-A beautiful web application that transforms Domain-Specific Language (DSL) questions into structured JSON test cases using Google's Gemini AI.
+A beautiful web application that transforms DSA (Data Structures and Algorithms) questions into structured JSON test cases using Google's Gemini AI.
 
 ## ✨ Features
 
 - **Beautiful Modern UI**: Clean, responsive design with gradient backgrounds and smooth animations
-- **AI-Powered Generation**: Uses Google Gemini API to convert natural language into structured test cases
+- **AI-Powered Generation**: Uses Google Gemini API to convert DSA questions into structured test cases
 - **Real-time Processing**: Instant generation with loading states and error handling
 - **Copy to Clipboard**: Easy copying of generated JSON
-- **Example Questions**: Pre-built examples to get you started
+- **Example DSA Questions**: Pre-built examples to get you started
 - **API Key Security**: Support for environment variables or user input
 - **Mobile Responsive**: Works perfectly on desktop and mobile devices
 
@@ -58,18 +58,21 @@ A beautiful web application that transforms Domain-Specific Language (DSL) quest
 ## 📖 How to Use
 
 1. **Enter your Gemini API key** (if not set as environment variable)
-2. **Type or select a DSL question** describing the test case you want to generate
+2. **Type or select a DSA question** describing the test case you want to generate
 3. **Click "Generate Test Case"** and wait for the AI to process your request
 4. **View the structured JSON output** with syntax highlighting
 5. **Copy the JSON** using the copy button for use in your projects
 
-## 💡 Example Questions
+## 💡 Example DSA Questions
 
 - "Check whether the given number is even or odd? n ranges from 1 to 40."
 - "Create a function that calculates the factorial of a non-negative integer."
 - "Write a function to find the maximum element in an array of integers."
 - "Implement a function that checks if a string is a palindrome."
 - "Create a function that sorts an array of objects by a specific property."
+- "Find the longest common subsequence between two strings."
+- "Implement binary search on a sorted array."
+- "Check if a binary tree is balanced."
 
 ## 🏗️ Project Structure
 
@@ -77,6 +80,7 @@ A beautiful web application that transforms Domain-Specific Language (DSL) quest
 ├── app.py                 # Flask backend application
 ├── generate_test.py       # Original Python script
 ├── requirements.txt       # Python dependencies
+├── .gitignore            # Git ignore file
 ├── .env.example          # Environment variables template
 ├── templates/
 │   └── index.html        # Frontend HTML template
@@ -99,7 +103,7 @@ The application supports the following environment variables:
 - **Interactive Elements**: Hover effects, loading states, and smooth transitions
 - **Syntax Highlighting**: JSON output with proper formatting
 - **Copy Functionality**: One-click copying of generated content
-- **Example Integration**: Click-to-use example questions
+- **Example Integration**: Click-to-use example DSA questions
 
 ### Backend
 - **Flask API**: RESTful API endpoints for processing requests
@@ -125,7 +129,7 @@ The application supports the following environment variables:
 
 2. **"Invalid JSON response" error**:
    - The Gemini API might be experiencing issues
-   - Try rephrasing your DSL question
+   - Try rephrasing your DSA question
    - Check your internet connection
 
 3. **Port already in use**:

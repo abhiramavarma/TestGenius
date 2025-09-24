@@ -83,13 +83,13 @@ def _extract_json_from_text(text: str) -> str:
                         return candidate.strip()
     return text
 
-def generate_test_json_from_dsl(api_key: str, dsl_question: str) -> str:
+def generate_test_json_from_dsa(api_key: str, dsa_question: str) -> str:
     """
-    Uses the Gemini API via LangChain to convert a DSL question into a structured JSON object.
+    Uses the Gemini API via LangChain to convert a DSA question into a structured JSON object.
 
     Args:
         api_key: Your Gemini API key.
-        dsl_question: The DSL question text you want to process.
+        dsa_question: The DSA question text you want to process.
 
     Returns:
         A formatted JSON string representing the test case.
@@ -112,7 +112,7 @@ def generate_test_json_from_dsl(api_key: str, dsl_question: str) -> str:
     # This system message gives the model its instructions. It's a "zero-shot" prompt
     # where we tell it exactly what to do and what format to use.
     system_prompt = """
-     You are an expert software quality assurance engineer. Your task is to analyze a given DSL (Domain-Specific Language) question and generate a structured JSON object based on it.
+     You are an expert software quality assurance engineer. Your task is to analyze a given DSA (Data Structures and Algorithms) question and generate a structured JSON object based on it.
 
      The JSON object MUST strictly follow this structure:
      {
@@ -138,7 +138,7 @@ def generate_test_json_from_dsl(api_key: str, dsl_question: str) -> str:
     # 3. Create the full prompt with the user's question
     messages = [
         SystemMessage(content=system_prompt),
-        HumanMessage(content=f"Here is the DSL question: '{dsl_question}'")
+        HumanMessage(content=f"Here is the DSA question: '{dsa_question}'")
     ]
 
     # 4. Invoke the model and get the response
@@ -162,22 +162,22 @@ if __name__ == "__main__":
     # ❗️ IMPORTANT: Replace with your actual Gemini API key
     my_api_key = "YOUR_GEMINI_API_KEY"
 
-    # 👉 Your DSL question goes here
+    # 👉 Your DSA question goes here
     # Example 1: A simple arithmetic operation
-    # dsl_question = "Create a function that calculates the factorial of a non-negative integer."
+    # dsa_question = "Create a function that calculates the factorial of a non-negative integer."
 
     # Example 2: A more complex string manipulation task
-    dsl_question = "Check whether the given number is even or odd? n ranges from 1 to 40. "
+    dsa_question = "Check whether the given number is even or odd? n ranges from 1 to 40. "
 
 
     if my_api_key == "YOUR_GEMINI_API_KEY":
         print("🚨 Error: Please replace 'YOUR_GEMINI_API_KEY' with your actual Gemini API key.")
     else:
         # Generate the JSON
-        result_json = generate_test_json_from_dsl(api_key=my_api_key, dsl_question=dsl_question)
+        result_json = generate_test_json_from_dsa(api_key=my_api_key, dsa_question=dsa_question)
 
         # Print the final result
-        print("\n✅ Successfully generated JSON from DSL question:")
+        print("\n✅ Successfully generated JSON from DSA question:")
         print("--------------------------------------------------")
         print(result_json)
         print("--------------------------------------------------")
